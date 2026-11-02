@@ -1,0 +1,56 @@
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+secrets/
+credentials/
+
+# Local database and Python
+*.db
+*.db-*
+*.sqlite
+*.sqlite3
+*.sqlite-*
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.tox/
+.venv/
+venv/
+
+# Node / Next.js
+node_modules/
+.next/
+out/
+coverage/
+*.tsbuildinfo
+npm-debug.log*
+
+# Local meeting uploads and recordings
+uploads/
+recordings/
+private_transcripts/
+transcripts/
+*.wav
+*.mp3
+*.m4a
+*.mp4
+*.webm
+
+# Temporary and generated files
+*.log
+*.tmp
+*.temp
+
+# Editor / OS
+.vscode/*
+!.vscode/extensions.json
+.idea/
+.DS_Store
+Thumbs.db
