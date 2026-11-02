@@ -1,5 +1,16 @@
 # Changelog
 
+## 1.1.3 — Interactive browser-local portfolio workspace
+
+- Replaced the read-only public experience with browser-local transcript import, deterministic analysis, keyword search/Q&A, analytics, heuristic claim inspection, editable action items, deletion/reset, and exports.
+- Kept public visitor data in browser storage with no FastAPI, database, or external provider requests; documented same-profile access and storage limitations.
+- Added browser-workspace regression tests, including exported file content checks, while preserving the existing Local Mode API path.
+
+## 1.1.2 — Frontend-only public demo
+
+- Added a build-time public read-only demo using bundled synthetic meetings with no backend API, database writes, uploads, edits, deletion, or Live AI.
+- Added client-side sample exports, demo-mode UI disclosures, regression tests, and Vercel setup/security documentation.
+
 ## 1.1.1 — Audit dependency correction
 
 - Updated the pinned Click version to satisfy the installed FastEmbed/Faster-Whisper `huggingface-hub` dependency while remaining compatible with Uvicorn.

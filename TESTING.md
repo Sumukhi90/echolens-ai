@@ -16,7 +16,7 @@ Set-Location ..\backend
 
 The backend tests cover import parsing/validation, existing API behavior and persistence, deletion cascades, evidence-grounded and abstaining Q&A, injection text, action editing/status/CSV, cross-meeting/date filters, analytics availability and timed speaking data, audio validation/transcription with a fake model, semantic vector ranking/cache with a deterministic fake embedder, Gemini retry/schema/citation/consent behavior with mocked HTTP, and safe additive schema migration. An API end-to-end test exercises transcript import through analysis, cited cross-meeting Q&A, search, action completion, CSV export, and deletion. No live API key, external provider call, or speech model download is needed by the tests.
 
-The frontend Vitest tests cover workspace/import validation and interactions with the cross-meeting Ask, action manager, and analytics views. The production build runs Next.js compilation, TypeScript checks, and static page generation. Browser-based end-to-end automation is not configured.
+The frontend Vitest tests cover Local Mode and the public browser workspace, including transcript import/persistence, WebVTT timestamps, evidence Q&A/abstention, action edits/status, analytics, deletion, unavailable audio handling, and Markdown/text/CSV export filenames and contents. A production browser smoke also exercised import, reload persistence, evidence Q&A, claim inspection, task editing, and analytics; it observed no application API requests or page errors. Automated browser end-to-end tests are not configured. The production build runs Next.js compilation, TypeScript checks, and static page generation; test each deployment mode separately with `NEXT_PUBLIC_DEMO_MODE=true` and unset.
 
 ## Executed evaluation
 

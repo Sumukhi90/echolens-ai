@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+const DEMO_MODE = process.env.NEXT_PUBLIC_DEMO_MODE === "true";
+
 export default function WelcomePage() {
   return (
     <main className="landing">
@@ -9,11 +11,11 @@ export default function WelcomePage() {
       </header>
       <section className="landing-hero">
         <div className="landing-copy">
-          <p className="eyebrow"><span className="landing-dot" /> CONVERSATION INTELLIGENCE, WITH RECEIPTS</p>
+          <p className="eyebrow"><span className="landing-dot" /> {DEMO_MODE ? "INTERACTIVE BROWSER WORKSPACE" : "CONVERSATION INTELLIGENCE, WITH RECEIPTS"}</p>
           <h1>Good meetings<br />deserve <span>good memory.</span></h1>
-          <p className="landing-lede">Turn transcripts into clear decisions, thoughtful follow-ups, and answers you can trace back to the conversation.</p>
+          <p className="landing-lede">{DEMO_MODE ? "Import TXT, Markdown, or WebVTT transcripts, explore evidence-linked analysis, and manage action items. Your data stays in this browser profile." : "Turn transcripts into clear decisions, thoughtful follow-ups, and answers you can trace back to the conversation."}</p>
           <div className="landing-actions"><Link className="button button-dark" href="/">Open your workspace <span>→</span></Link><a className="landing-secondary" href="#approach">See how it works <span>↓</span></a></div>
-          <div className="landing-assurance"><span>◈</span> Local by default <i /> No API key needed <i /> Evidence-linked insights</div>
+          <div className="landing-assurance"><span>◈</span> {DEMO_MODE ? "Browser-local processing" : "Local by default"} <i /> No API key needed <i /> Evidence-linked insights</div>
         </div>
         <div className="landing-preview" aria-label="Preview of evidence linked meeting notes">
           <div className="preview-window">
@@ -23,8 +25,8 @@ export default function WelcomePage() {
           <div className="preview-note"><span>✦</span><div><strong>Evidence, not guesswork.</strong><small>Every insight keeps the source in view.</small></div></div>
         </div>
       </section>
-      <section className="landing-principles" id="approach"><div><span>01</span><strong>Bring the conversation</strong><p>Import TXT, Markdown, or WebVTT transcripts. Preview before saving.</p></div><div><span>02</span><strong>Find the signal</strong><p>Review topics, decisions, action items, questions, and risks.</p></div><div><span>03</span><strong>Check the source</strong><p>Open the supporting excerpt—or get a clear “not enough evidence.”</p></div></section>
-      <footer className="landing-footer"><span>echolens.ai</span><span>Local-first meeting intelligence · No external AI calls</span><Link href="/">Enter workspace →</Link></footer>
+      <section className="landing-principles" id="approach">{DEMO_MODE ? <><div><span>01</span><strong>Bring a transcript</strong><p>Import TXT, Markdown, or WebVTT files up to 2 MB.</p></div><div><span>02</span><strong>Explore the evidence</strong><p>Review deterministic summaries, decisions, tasks, search, and cited Q&A.</p></div><div><span>03</span><strong>Keep control</strong><p>Workspace data stays in this browser profile and can be reset at any time.</p></div></> : <><div><span>01</span><strong>Bring the conversation</strong><p>Import TXT, Markdown, or WebVTT transcripts. Preview before saving.</p></div><div><span>02</span><strong>Find the signal</strong><p>Review topics, decisions, action items, questions, and risks.</p></div><div><span>03</span><strong>Check the source</strong><p>Open the supporting excerpt—or get a clear “not enough evidence.”</p></div></>}</section>
+      <footer className="landing-footer"><span>echolens.ai</span><span>{DEMO_MODE ? "Browser-local storage · No application API or external AI" : "Local-first meeting intelligence · No external AI calls"}</span><Link href="/">{DEMO_MODE ? "Open workspace →" : "Enter workspace →"}</Link></footer>
     </main>
   );
 }

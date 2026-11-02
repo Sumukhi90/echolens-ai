@@ -12,6 +12,8 @@
 
 ## Privacy and deployment limits
 
+- `NEXT_PUBLIC_DEMO_MODE=true` enables visitor transcript import and edits using browser-local processing and `localStorage`; it makes no application API or external provider requests. Browser data is not encrypted or synced, is shared by people using the same browser profile, and can be removed by clearing site data or resetting the workspace. Do not use shared-device browser mode for confidential transcripts. The public frontend and its synthetic sample fixtures are visible to visitors.
+- Browser mode does not enable Live Gemini, audio transcription, or model-backed semantic retrieval. Do not put any API key or backend URL in the frontend project. This build does not secure or authorize the separate FastAPI backend.
 - Transcript contents and SQLite data are not encrypted at rest. Protect the device, account, database, backups, and filesystem permissions.
 - This application has **no authentication, authorization, tenant isolation, or access control**. Anyone who can reach the API can read, alter, export, or delete its meeting data. Bind to localhost and do not expose it to LAN or public networks.
 - CORS is not authentication. There is no CSRF protection because the local API does not use browser credentials; do not treat CORS as an access-control boundary.
@@ -28,4 +30,4 @@
 4. Review provider disclosures and consent UX with the data owner.
 5. Run a broader security and privacy assessment against the chosen deployment model.
 
-This is a local portfolio application, not a hardened production multi-user service.
+This is a local portfolio application, not a hardened production multi-user service. The browser-only frontend can be hosted publicly without exposing FastAPI, but its browser storage is not isolated between people sharing the same browser profile. The unauthenticated FastAPI service cannot be exposed publicly.

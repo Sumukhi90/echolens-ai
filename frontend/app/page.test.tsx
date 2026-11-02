@@ -68,7 +68,7 @@ describe("EchoLens workspace", () => {
     }));
     render(<Home />);
     fireEvent.click(screen.getByRole("button", { name: /Import a meeting/i }));
-    fireEvent.change(screen.getByLabelText("Transcript or audio file"), {
+    fireEvent.change(screen.getByLabelText("Transcript file"), {
       target: { files: [new File(["content"], "notes.pdf")] },
     });
     expect(screen.getByRole("alert")).toHaveTextContent("Unsupported file type");
